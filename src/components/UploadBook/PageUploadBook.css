@@ -1,0 +1,11 @@
+
+.fondoImg { 
+    background: url("https://images.unsplash.com/photo-1487724448953-a9d9963d71ae?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=781&q=80") 
+    no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: auto;
+    width: auto;
+  }
