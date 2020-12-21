@@ -1,16 +1,5 @@
 .App {
-  text-align: center;
-  
-  
-  
-  
-}
-
-.content-wrap{
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  min-height: 100vh;
+  background-color: red;
 }
 
 .Logo {

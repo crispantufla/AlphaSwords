@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
+import CategoryBox from './components/CategoryBox';
+import Header from './components/Header';
 import "./Home.css";
-import CategoryBox from './CategoryBox';
 
 const Home = () => {
 
@@ -17,34 +18,27 @@ const Home = () => {
     
   return (
     <Fragment>
-    <div class="main">
-    <div class="slider" id="slider">
-      <div class="slides current">
-        <h1>Escucha todo tipo</h1>
-        <h1>de audiolibro</h1>
+      <Header />
+      <div class="contenedor">
+        <table>
+          <tr>
+            {Object.keys(categories).map(key => 
+              <CategoryBox
+                category={key}
+                img={categories[key]}
+              />
+            )}
+          </tr>
+          <tr>
+            {Object.keys(categoriesTwo).map(key => 
+              <CategoryBox
+                category={key}
+                img={categoriesTwo[key]}
+              />
+            )}
+          </tr>
+        </table>
       </div>
-    </div>
-  </div>
-  <div class="contenedor">
-    <table>
-      <tr>
-        {Object.keys(categories).map(key => 
-          <CategoryBox
-            category={key}
-            img={categories[key]}
-          />
-        )}
-      </tr>
-      <tr>
-        {Object.keys(categoriesTwo).map(key => 
-          <CategoryBox
-            category={key}
-            img={categoriesTwo[key]}
-          />
-        )}
-      </tr>
-    </table>
-    </div>
     </Fragment>
   )
 }

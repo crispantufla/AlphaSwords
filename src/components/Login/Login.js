@@ -3,23 +3,20 @@ import { useHistory } from "react-router-dom";
 import {fetchResource} from "../../api";
 import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { LogedContext } from '../../LogedContext';
+import { LoggedContext } from '../../LoggedContext';
 
 const Login = () => {
-
-  const loged = useContext(LogedContext);
-
+  const logged = useContext(LoggedContext);
   let history = useHistory();
 
-  function handleClickR() {
+  const handleClickR = () => {
     history.push("/register");
   }
 
-  function handleClickO() {
+  const handleClickO = () => {
     history.push("/login/forgetPass");
   }
  
-  //Mostrar constraseña
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -41,17 +38,15 @@ const Login = () => {
   const sendForm = (event) => {
 		event.preventDefault();
 		
-    fetchResource('login','','POST', {
+    fetchResource('login', '', 'POST', {
 			email: datos.email, 
 			password: datos.password
-		}).then((result) => {
+		}).then(result => {
       if (!result.token) {
         window.alert("No se ha guardado token");
       } else {
-        localStorage.setItem("token", result.token);
-        localStorage.setItem("id", result.id);
+        logged.logIn(result.token, result.id);
         history.push("/biblotecas");
-        loged.setLoged(true);
       }
     });
   }
@@ -59,25 +54,23 @@ const Login = () => {
   return (
     <Fragment>
     <div className="body-1">
-      <form onSubmit={sendForm}>
       <div className="login-reg-panel">
-      <div className="logo-l"></div>			
-              <div className="register-info-box">
-                <h2 className="nocuenta">¿No tienes cuenta?</h2>
-                <label id="label-login" for="log-login-show" onClick={handleClickR}>Registrarse</label>
-              </div>
-              <div className="white-panel">
-                <div className="login-show">
-                  <h2>Iniciar Sesión</h2>
-                  <input type="text" name="email" placeholder="Correo Electrónico" required onChange={handleImputChange}/>
-                  <input  type={passwordShown ? "text" : "password"} name="password" placeholder="Contraseña" required onChange={handleImputChange}/>
-                  <i onClick={togglePasswordVisiblity} className="ver"><img src="https://image.flaticon.com/icons/png/512/65/65000.png" className="eye" /></i>{" "}
-                  <input type="submit" value="Iniciar Sesión" />
-                  <a className="olvidado" onClick={handleClickO}>¿Te has olvidado la contraseña?</a>
-                </div> 
-              </div>
-            </div>
-      </form>
+        <div className="logo-l" />		
+        <div className="register-info-box">
+          <h2 className="nocuenta">¿No tienes cuenta?</h2>
+          <label id="label-login" for="log-login-show" onClick={handleClickR}>Registrarse</label>
+        </div>
+        <div className="white-panel">
+          <div className="login-show">
+            <h2>Iniciar Sesión</h2>
+            <input type="text" name="email" placeholder="Correo Electrónico" required onChange={handleImputChange}/>
+            <input  type={passwordShown ? "text" : "password"} name="password" placeholder="Contraseña" required onChange={handleImputChange}/>
+            <i onClick={togglePasswordVisiblity} className="ver"><img src="https://image.flaticon.com/icons/png/512/65/65000.png" className="eye" /></i>{" "}
+            <input className="submitButton" onClick={sendForm} value="Iniciar Sesión" />
+            <a className="olvidado" onClick={handleClickO}>¿Te has olvidado la contraseña?</a>
+          </div> 
+        </div>
+      </div>
       </div>
     </Fragment>
   )

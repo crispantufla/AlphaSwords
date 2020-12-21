@@ -1,5 +1,5 @@
 const HOME = "/";
-const BIBLIOTECA = "/biblioteca";
+const LIBRARY = "/library";
 const LOGIN = '/login';
 const REGISTER = '/register';
 const PERFIL = '/perfil';
@@ -8,11 +8,10 @@ const FORGETPASS = '/login/forgetPass';
 
 export {
     HOME,
-    BIBLIOTECA,
+    LIBRARY,
     LOGIN,
     REGISTER,
     PERFIL,
     UPLOADBOOK,
     FORGETPASS
-} 
-
+}
