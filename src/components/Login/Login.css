@@ -87,7 +87,7 @@ a{
     border: 1px solid #b5b5b5;
     outline: none;
 }
-.login-show input[type="submit"] {
+.submitButton {
     max-width: 150px;
     width: 100%;
     background: #444444;

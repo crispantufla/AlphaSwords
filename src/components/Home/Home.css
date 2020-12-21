@@ -229,3 +229,35 @@
         background:#017fb5;
       }
       
+      /*     HEADER        */
+
+.NewHeader {
+  font-size: 16px;
+  min-height: 30em;
+  background: linear-gradient(rgba(0,0,0, .50) 0%, rgba(0,0,0, .50) 100%),url(../Home/logo.jpg);
+  background-position: center center;
+  background-size: cover;
+  margin-bottom: 3.12em;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.NewContainer{
+justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.NewTitle {
+font-weight: 600;
+font-size: 3.12em;
+margin-bottom: 0.4em;
+}
+
+.NewDescription{
+font-weight: normal;
+font-size: 1em;
+line-height: 1.75em;
+margin-bottom: 1.25em;
+}

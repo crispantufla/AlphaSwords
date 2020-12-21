@@ -1,35 +1,27 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import {isLogin, logOut} from '../../utils/loginUtils';
-import { LogedContext } from '../../LogedContext';
+import { LoggedContext } from '../../LoggedContext';
+import {HOME, LIBRARY, REGISTER, LOGIN, PERFIL, UPLOADBOOK, FORGETPASS} from '../../routes';
 
 const Navbar = () => {
-
-    const loged = useContext(LogedContext)
-    const trueLogOut = () =>{
-        logOut()
-        loged.setLoged(false);
-    }
+    const logged = useContext(LoggedContext)
 
     return (
         <nav className='navbar'>
             <div className='navbar-container'>
-                
-
-                {isLogin() ? 
+                {logged.logged ? 
                     <div className='nav-links'> 
-                        <Link to="/" >Home</Link>
-                        <Link to="/biblioteca" >Bibliotecas</Link>
-                        <Link to="/upload"> Subir Audiolibro </Link> 
-                        <Link to="/perfil"> Perfil </Link> 
-                        <Link className="nav-cerrarsesion" to="/perfil" onClick={trueLogOut}> Cerrar Sesión </Link> 
+                        <Link to={HOME}>Home</Link>
+                        <Link to={LIBRARY}>Bibliotecas</Link>
+                        <Link to="/upload">Subir Audiolibro</Link> 
+                        <Link to={PERFIL}>Perfil</Link> 
+                        <Link className="nav-cerrarsesion" to={HOME} onClick={logged.logOut}>Cerrar Sesión</Link> 
                     </div> : 
                     <div className='nav-links'> 
-                        <Link to="/" >Home</Link>
-                        <Link to="/biblioteca" >Bibliotecas</Link>
-                        <Link to="/register"> Register </Link>
-                        <Link className="nav-login" to="/login"> Login </Link>
+                        <Link to={HOME} >Home</Link>
+                        <Link to={REGISTER}>Register </Link>
+                        <Link className="nav-login" to={LOGIN}>Login</Link>
                     </div>
                 }
             </div>
