@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { fetchResource } from "../../api";
-import { AddComment } from '../AddComment/AddComment';
-import { CommentsViewer } from '../CommentsViewer/CommentsViewer';
 import { useParams } from 'react-router-dom';
+import { fetchResource } from "../../api";
+import CommentsViewer from './CommentsViewer/CommentsViewer';
 import TrackPLayer from '../TrackPlayer/TrackPlayer';
 import './InfoAudioLibro.css';
 
@@ -31,6 +30,7 @@ const InfoAudioLibro = () => {
                 <div>
                     {data && data.file ? <TrackPLayer id={data.file}/> : <div>No se Ha podido encontrar el archivo</div>} 
                 </div>
+                <CommentsViewer id={bookid} />
             </div>
         </div>
     )

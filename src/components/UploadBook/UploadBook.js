@@ -90,7 +90,7 @@ const UploadBook = () => {
       </label><br/>
       <textarea 
         type="text" 
-        name="sinopsis" 
+        name="synopsis" 
         required
         onChange={handleImputChange}
       /><br/>
