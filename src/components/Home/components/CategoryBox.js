@@ -1,16 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CategoryBox = ({ category, img }) => {
     return (
-        <td>
-            <figure>
-                <img src={img} alt="Aqui deberia estar mi imagen" />
-                <div class="capa">
-                    <h3>{category}</h3>
-                    <p><b>Leer Más</b></p>
+        <div className="categoryBox">
+            <Link to={ "/" + category.replace(/ /g, '').toLowerCase()}>
+                <div className="categoryImgContainer">
+                    <div className="more">{category}</div>
+                    <img src={img} className="categoryImg" alt="aqui yo puse mi imagen"/>
                 </div>
-            </figure>
-        </td>
+            </Link>
+        </div>
     )
 }
 

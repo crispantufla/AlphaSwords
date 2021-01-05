@@ -1,39 +1,35 @@
 import React from 'react';
 import Library from './components/Library/Library';
-import Login from './components/Login/Login';
 import Navbar from './components/Navbar/Navbar';
-import Register from './components/Register/Register';
 import UserPanel from './components/UserPanel/UserPanel';
 import Home from './components/Home/Home';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import Forgetpass from './components/Login/ForgetPass';
-import PageUploadBook from './components/UploadBook/PageUploadBook';
+import NoLoggedUser from './components/PrivateRoute/NoLoggedUser';
+import UploadBook from './components/UploadBook/UploadBook';
 import InfoAudioLibro from './components/InfoAudioLibro/InfoAudioLibro';
+import Footer from './components/Footer/Footer';
 import { LoggedContextProvider } from './LoggedContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { HOME, LIBRARY, REGISTER, LOGIN, PERFIL, UPLOADBOOK, FORGETPASS } from './routes';
-
+import { HOME, LIBRARY, PERFIL, UPLOADBOOK } from './routes';
 import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <LoggedContextProvider>
-          <Navbar />
+    <BrowserRouter>
+      <LoggedContextProvider>
+        <Navbar />
+        <div className="App">
           <Switch>
-            <Route path={HOME} exact component={Home} />
-            <Route path={LOGIN} exact component={Login} />
-            <Route path={REGISTER} component={Register} />
-            <Route path={LIBRARY} component={Library} />
+            <NoLoggedUser path={HOME} exact component={Home} />
+            <PrivateRoute path={"/biblioteca"} exact component={Library} />
+            <PrivateRoute path={"/biblioteca/:category"} component={Library} />
             <PrivateRoute path={PERFIL} component={UserPanel} />
-            <PrivateRoute path={UPLOADBOOK} component={PageUploadBook} />
-            <PrivateRoute path={"/book/:bookid"} component={InfoAudioLibro} />
-            <Route path={FORGETPASS} exact component={Forgetpass} />
+            <PrivateRoute path={UPLOADBOOK} component={UploadBook} />
+            <PrivateRoute path={"/libro/:bookId"} component={InfoAudioLibro} />
           </Switch>
-        </LoggedContextProvider>
-      </BrowserRouter>
-    </div>
+        </div>
+      </LoggedContextProvider>
+    </BrowserRouter>
   );
 }
 

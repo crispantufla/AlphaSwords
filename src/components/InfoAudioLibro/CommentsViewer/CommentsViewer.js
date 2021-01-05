@@ -5,13 +5,13 @@ import AddCommentary from './components/AddCommentary';
 import NewCommentary from './components/NewCommentary';
 import './CommentViewer.css';
 
-const CommentsViewer = ({id}) => {
+const CommentsViewer = ({bookId}) => {
     const [commentContent, setCommentContent] = useState();
     const [newCommentary, setNewCommentary] = useState();
 
     useEffect(() => {
-        fetchResource ('user/getcomments', id, 'GET').then(setCommentContent);
-    }, [newCommentary])
+        fetchResource ('book/getcomments', bookId, 'GET').then(setCommentContent);
+    }, [newCommentary, bookId])
 
     return (
         <div className="BoxComments">
@@ -24,7 +24,7 @@ const CommentsViewer = ({id}) => {
                     <Commentary data={item} />
                 </div>
             ))}
-            <AddCommentary bookid={id} setNewCommentary={setNewCommentary} />
+            <AddCommentary bookid={bookId} setNewCommentary={setNewCommentary} />
         </div>
     )
 }

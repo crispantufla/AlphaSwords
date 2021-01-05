@@ -27,5 +27,10 @@ export const fetchResource = (resource, id, method, data, options={}, headers={}
         body: JSON.stringify(data)
     }
 
-    return fetch(url, finalOptions).then(res => res.json());
+    return fetch(url, finalOptions).then(res => {
+        if (res) {
+            return res.json();
+        }
+        return "";
+    });
 }

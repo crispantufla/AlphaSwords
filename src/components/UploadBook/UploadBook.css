@@ -1,78 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-
-  
-  
-.uploadForm{
-    width: 35%;
-    margin: 0 auto;
-    background-color: rgba(238, 205, 161, 0.918);
-    display:flex;
-    flex-direction: column;
-    border-radius: 20px;
-    position: relative;
-    top: 20px;
-    bottom: 20px;
-    z-index:2;
-    
+.UploadBook {
+  background: #141414;
+  box-sizing: border-box;
+  padding-top: 40px;
+  height: 900px;
+  width: 100%;
+  padding-top: 100px;
 }
 
-.input-library { 
-    width: 90%;
-    margin: 0 5%;
-    height: 2em;
-    padding-left: 10px;
-    border-radius: 8px;
-    background-color: white;
-    border: none;
-    
+.UploadBook form {
+  width: 60%;
+  height: 90%;
+  margin: auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #fc8f35;
+  box-shadow: 0px 1px 15px 1px rgba(255, 166, 0, 0.33);
 }
 
-.sinopsis {
-    width: 90%;
-    margin: 0 5%;
-    height: 6em;
-    padding-left: 10px;
-    border-radius: 8px;
-    background-color: white;
-    border: none;
-    resize: auto;
+.UploadBook input {
+  margin: 20px 0;
+  text-align: center;
+  width: 50%;
+  padding: 8px;
+  border: 1px solid lightgray;
+  box-shadow: 4px 4px 15px -11px #fc8f35;
+  font-size: 16px;
 }
 
-
-.labelUpload{
-    margin:0 auto;
-    width:100%;
-    text-align: left;
-    font-family: 'Space Grotesk',  sans-serif;
-    color: rgb(10, 10, 10);
-    font-weight: 500 ;
-    padding: 0 15px;
-    padding-left: 5%;
-
+.UploadBook textarea {
+  font-size: 12px;
+  resize: none;
+  margin: 20px 0;
+  text-align: center;
+  width: 50%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  box-shadow: 4px 4px 15px -11px #000000;
 }
 
-.form-library{
-    margin-top: 10vh;
+.UploadBook select {
+  margin: 20px 0;
+  width: 50%;
+  padding: 10px;
+  box-shadow: 4px 4px 15px -11px #000000;
+  font-size: 16px;
 }
 
-.submitButton{
-    width: 20%;
-    margin: 0 auto;
-    background: #ee565b ;
-    font-weight: bold;
-    margin-bottom: 20px;
-    border: none;
-    color: white;
-    height: 3em;
-    border-radius: 5px;
-    font-family: 'Space Grotesk',  sans-serif;
-}
-
-.tituloUpload{
-    background-color: #ee565b;
-    padding: 15px 0;
-    color: white;
-    padding-left: 5%;
-    border-radius: 20px 20px 0 0;
-    font-weight: bold;
+.UploadBook a {
+  background-color: #fc8f35;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 4px 4px 15px -11px #000000;
+  font-weight: bold;
+  cursor: pointer;
 }

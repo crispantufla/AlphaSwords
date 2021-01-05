@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import {fetchResource} from "../../../api";
 import BookList from './BookList';
 
-const CategoryList = () => {
+const CategoryList = ({category}) => {
     const [data, setData] = useState();
 
     useEffect(() => {
-        fetchResource('user/getcategorys', '', 'GET').then(setData);
-    }, []);
+        fetchResource('book/getcategorys', category, 'GET').then(result => setData(result));
+    }, [category]);
 
     return (
-        <div className="NewCategoryList">
-            {data && data.map(item => (
-                <div className="NewCategoryListContainer"> 
-                    <h3>{item.name}</h3>
-                    <BookList books={item.books} />
+        <Fragment>
+            {data && 
+                <div className="CategoryListContainer"> 
+                    <BookList books={data.books} />
                 </div>
-            ))}
-        </div>  
+            }
+        </Fragment>  
     )
 }
 

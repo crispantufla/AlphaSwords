@@ -17,9 +17,6 @@ const ResetPass = () => {
  
   const sendForm = (event) => {
     event.preventDefault();
-    console.log(datos.email)
-
-    //localhost:3000/data/User
     fetch('http://localhost:3001/resetpass',{
       method: 'POST',
       headers: {

@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 
 const MiniatureBook = ({ book }) => {
     return (
-        <div className= "NewMiniatureBook">
-            <Link to={ "book/" + book._id }>
-                {book && <div className="ImgContainer"><img src={book.cover} className="NewImg"/></div>}
-                {book && <p className="BookTitle">{book.title}</p>}
+        <div className= "MiniatureBook">
+            <Link to={"/libro/" + book._id}>
+                {book && <div className="ImgContainer">
+                    <div className="MiniatureBookTitle">{book.title}</div>
+                    <img src={book.cover} className="BookImg" alt="aqui yo puse mi imagen"/>
+                </div>}
             </Link>
         </div>
     )

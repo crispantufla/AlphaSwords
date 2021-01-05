@@ -3,7 +3,7 @@ import MiniatureBook from './MiniatureBook';
 
 const BookList = ({ books }) => {
     return (
-        <div className="NewBookList">
+        <div className="BookList">
             {books && books.map(item => (
                 <MiniatureBook book={item} />
             ))}

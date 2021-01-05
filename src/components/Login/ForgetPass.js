@@ -17,9 +17,7 @@ const ForgetPass = () => {
   
   const sendForm = (event) => {
     event.preventDefault();
-    console.log(datos.email)
 
-    //localhost:3000/data/User
     fetch('http://localhost:3001/forgetpass',{
       method: 'POST',
       headers: {
