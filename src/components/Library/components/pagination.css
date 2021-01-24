@@ -1,0 +1,27 @@
+.pagination2 {
+    background-color: black;
+}
+.pagination2 ul{
+    display: flex;
+    background: black;
+    flex-direction: row;
+}
+
+.pagination2 ul li{
+    list-style: none;
+    text-align: center;
+}
+
+.numb {
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+}
+
+.actual {
+    color:red;
+}
+
+.notActual {
+    color: green;
+}

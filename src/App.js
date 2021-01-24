@@ -1,5 +1,5 @@
 import React from 'react';
-import Library from './components/Library/Library';
+import LoadLibrary from './components/Library/LoadLibrary'
 import Navbar from './components/Navbar/Navbar';
 import UserPanel from './components/UserPanel/UserPanel';
 import Home from './components/Home/Home';
@@ -21,8 +21,8 @@ const App = () => {
         <div className="App">
           <Switch>
             <NoLoggedUser path={HOME} exact component={Home} />
-            <PrivateRoute path={"/biblioteca"} exact component={Library} />
-            <PrivateRoute path={"/biblioteca/:category"} component={Library} />
+            <PrivateRoute path={"/biblioteca"} exact component={LoadLibrary} />
+            <PrivateRoute path={"/biblioteca/:category"} component={LoadLibrary} />
             <PrivateRoute path={PERFIL} component={UserPanel} />
             <PrivateRoute path={UPLOADBOOK} component={UploadBook} />
             <PrivateRoute path={"/libro/:bookId"} component={InfoAudioLibro} />

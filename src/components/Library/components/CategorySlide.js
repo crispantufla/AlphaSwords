@@ -4,19 +4,20 @@ import {
     NavLink
 } from "react-router-dom";
 
-const CategorySlider = ({data, setCategory}) => {
+const CategorySlider = ({categories, setCategory, setPages}) => {
     const handleclick = (event) => {
-        setCategory(event.target.name)
+        setCategory(event.target.dataset.id);
+        setPages(event.target.dataset.count);
     }
-
     return (
         <div className="CategorySlide">
-            {data && data.map(item => (
-                <NavLink 
-                    className="CategoryItem" 
+            {categories && categories.map(item => (
+                <NavLink
+                    className="CategoryItem"
                     to={"/biblioteca/" + item.name.toLowerCase()} 
                     activeClassName="CategoryItemActive" 
-                    name={item._id} 
+                    data-id={item._id} 
+                    data-count={item.books.length}
                     onClick={handleclick}
                 >
                     {item.name}

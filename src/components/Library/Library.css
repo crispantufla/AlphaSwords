@@ -121,3 +121,25 @@
   font-weight: 800;
   font-size: 20px;
 }
+
+.Pagination {
+  text-align: center;
+  padding: 15px;
+}
+
+.Pagination button {
+	background-color:#ffffff;
+	border:1px solid #a38200;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-size:20px;
+	padding:10px 15px;
+}
+.Pagination button:hover {
+	background-color:#fad473;
+}
+.Pagination button:active {
+	position:relative;
+	top:1px;
+}
