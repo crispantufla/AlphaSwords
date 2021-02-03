@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { LoggedContext } from '../../LoggedContext';
-import {HOME, LIBRARY, PERFIL, UPLOADBOOK} from '../../routes';
+import {HOME, PERFIL, UPLOADBOOK} from '../../routes';
 import {Home, Person, Publish, ExitToApp} from '@material-ui/icons/';
 import './Navbar.css';
 
@@ -10,21 +10,20 @@ const Navbar = () => {
 
     return (
         <header className='Navbar'>
-            {logged.logged ? 
-                <nav className='menu'> 
+            {logged.logged ?
+                <nav className='menu'>
                     <Link to={HOME} className="logo">S-Words</Link>
                     <ul className="navigation">
-                        <li><Link to={LIBRARY}><Home />Biblioteca</Link></li>
+                        <li><Link to={HOME}><Home />Biblioteca</Link></li>
                         <li><Link to={UPLOADBOOK}><Publish />Subir Audiolibro</Link></li>
                         <li><Link to={PERFIL}><Person />Perfil</Link></li>
                         <li><Link to={HOME} onClick={logged.logOut}><ExitToApp />Cerrar Sesión</Link></li>
                     </ul>
-                </nav> : 
+                </nav> :
                 <nav className='navigation'>
                     <a href="https://github.com/crispantufla/">GIT!</a>
                 </nav>
             }
-            
         </header>
     )
 }

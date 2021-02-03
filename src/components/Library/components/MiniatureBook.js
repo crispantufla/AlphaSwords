@@ -7,7 +7,7 @@ const MiniatureBook = ({ book }) => {
             <Link to={"/libro/" + book._id}>
                 {book && <div className="ImgContainer">
                     <div className="MiniatureBookTitle">{book.title}</div>
-                    <img src={book.cover} className="BookImg" alt="aqui yo puse mi imagen"/>
+                    <img src={book.cover} className="BookImg" alt="image not found"/>
                 </div>}
             </Link>
         </div>

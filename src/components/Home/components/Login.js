@@ -39,7 +39,7 @@ const Login = () => {
                     minLength: {value: 6, message: "La contraseña debe tener entre 4 y 60 caracteres."},
                     maxLength: {value: 15, message: "La contraseña debe tener entre 4 y 60 caracteres."}
                 })}/>
-                <a>¿Has olvidado la contraseña?</a>
+                <a href="https://www.w3schools.com">¿Has olvidado la contraseña?</a>
                 <p>{errors?.password?.message}</p>
                 <button>Iniciar sesión</button>
             </form>

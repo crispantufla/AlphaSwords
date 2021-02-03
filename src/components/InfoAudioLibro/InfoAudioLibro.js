@@ -7,32 +7,32 @@ import FavButton from './FavButton/FavButton';
 import './InfoAudioLibro.css';
 
 const InfoAudioLibro = () => {
-    const [data, setData] = useState();
-    let {bookId} = useParams()
+    const [book, setBook] = useState();
+    const { bookId } = useParams()
 
     useEffect(() => {
-        fetchResource('book/getbook', bookId, 'GET').then(setData);
+        fetchResource('book/getbook', bookId, 'GET').then(setBook);
     }, [bookId])
 
     return (
         <Fragment>
-            {data && 
+            {book && 
                 <div className="boxInfo">
                     <div className="bookContainer">
-                        <div className="TitleBox">{data.title}</div>
+                        <div className="titleBox">{book.title}</div>
                         <FavButton bookId={bookId} />
-                        <img className="BookImage" src={data.cover} alt="aqui yo puse mi imagen" />
+                        <img className="bookImage" src={book.cover} alt="image not found" />
                     </div>
                     <div className="trackContainer">
                         <div className="trackPlayer">
-                            {data.file ? <TrackPLayer id={data.file}/> : <div>No se Ha podido encontrar el archivo</div> } 
+                            {book.file ? <TrackPLayer id={book.file}/> : <div>No se Ha podido encontrar el archivo</div>} 
                         </div>
                         <div className="bookBoxText">
-                            <div className="TitleBox">{data.title}</div>
-                            <div className="AuthorBox">Autor/a: {data.author}</div>
-                            <div className="CategoryBox">Categoria: {data.category.name}</div>
-                            <div className="CreatedByBox">Creado por: {data.user.nickname}</div>
-                            <div className="DescriptionBox">Descripción: {data.synopsis} </div>
+                            <div className="titleBox">{book.title}</div>
+                            <div className="authorBox">Autor/a: {book.author}</div>
+                            <div className="categoryBox">Categoria: {book.category.name}</div>
+                            <div className="createdByBox">Creado por: {book.user.nickname}</div>
+                            <div className="descriptionBox">Descripción: {book.synopsis}</div>
                         </div>
                     </div>
                     <CommentsViewer bookId={bookId} />

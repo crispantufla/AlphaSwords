@@ -2,20 +2,20 @@ import React, { Fragment, useState } from 'react';
 import Register from './Register';
 import Login from './Login';
 
-const UserForm = () => {
-    const [form, setForm] = useState (false);
+const UserFormLogin = () => {
+    const [formLogin, setFormLogin] = useState (false);
 
     const handleClick = () => {
-        if (form) {
-            return setForm(false)
+        if (formLogin) {
+            return setFormLogin(false)
         }
         
-        return setForm(true);
+        return setFormLogin(true);
     }
 
     return (
         <Fragment>
-            {form ? <Fragment>
+            {formLogin ? <Fragment>
                 <Login />
                 <a onClick={handleClick}>Que aun no tienes cuenta? Vamos a crear una!</a>
             </Fragment> :
@@ -27,4 +27,4 @@ const UserForm = () => {
     )
 }
 
-export default UserForm
+export default UserFormLogin

@@ -1,31 +1,30 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import {fetchResource} from "../../../api";
-import Pagination from './Pagination';
-import Pagination2 from './Pagination2';
+import Pagination from '../../Pagination/Pagination';
 import BookList from './BookList';
 import BookFinder from './BookFinder';
 
 const CategoryList = ({category, pages}) => {
-    const [data, setData] = useState();
-    const [page, setPage] = useState(1);
+    const [categoryData, setCategoryData] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        fetchResource('book/getcategorys', category + "/" + page, 'GET').then(result => setData(result));
-    }, [category, page]);
+        fetchResource('book/getcategories', category + "/" + currentPage, 'GET').then(categoriesResult => setCategoryData(categoriesResult))
+    }, [category, currentPage]);
 
     useEffect(()=> {
-        setPage(1);
-    }, [category, pages])
+        setCurrentPage(1)
+    }, [category, pages]);
 
     return (
         <Fragment>
-            {data && 
+            <BookFinder />
+            {categoryData && 
                 <div className="CategoryListContainer"> 
-                    <BookFinder />
-                    <BookList books={data.books} />
+                    <BookList books={categoryData.category.books} />
+                    <Pagination totalPages={Math.ceil(pages / categoryData.limit)} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
                 </div>
             }
-            <Pagination totalpages={pages} setPage={setPage} page={page}/>
         </Fragment>  
     )
 }

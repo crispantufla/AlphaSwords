@@ -13,7 +13,7 @@ const Home = () => {
           <h4>
             Aqui puedes compartir tus Audiolibros preferidos y escucharlos cuando quieras
           </h4>
-          <img src="https://i.ibb.co/Lp6m7tm/Sin-t-tulo-1.png" alt="hola"/>
+          <img src="https://i.ibb.co/Lp6m7tm/Sin-t-tulo-1.png" alt="image not found"/>
         </div>
         <div className="userFormContainer">
           <div className="userForm">

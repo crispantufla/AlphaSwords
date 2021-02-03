@@ -19,13 +19,13 @@
     padding-top: 20px;
 }
 
-.TitleBox {
+.titleBox {
     font-style: bold;
     font-family: 'Dancing Script', cursive;
     font-size: xxx-large;
 }
 
-.BookImage {
+.bookImage {
     margin: 50px;
     width: 400px;
     height: 600px;
@@ -57,20 +57,20 @@
     flex-direction: column;
 }
 
-.AuthorBox,
-.CategoryBox{
+.authorBox,
+.categoryBox{
     color: rgb(156, 137, 125);
     font-style: italic;
     margin-top: 5px;
 }
-.CreatedByBox{
+.createdByBox{
     color: rgb(105, 99, 95);
     font-style: italic;
     margin-top: 5px;
     font-size: smaller;
 }
 
-.DescriptionBox{
+.descriptionBox{
     text-align: justify;
     font-family: 'Mukta';
     max-width: 600px;
@@ -81,7 +81,7 @@
     padding-right: 10px;
 }
 
-.AddCommentBox {
+.addCommentBox {
     flex: 0 1 100%;
     background-color: rgba(30, 30, 30, 0.8);
     color: white;

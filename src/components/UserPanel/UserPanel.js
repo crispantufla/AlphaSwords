@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import InputUpdate from '../Utils/InputUpdate';
+import InputUpdate from './InputUpdate';
 import {fetchResource} from "../../api";
 
 const UserPanel = () => {

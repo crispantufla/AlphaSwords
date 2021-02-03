@@ -9,8 +9,8 @@ import UploadBook from './components/UploadBook/UploadBook';
 import InfoAudioLibro from './components/InfoAudioLibro/InfoAudioLibro';
 import Footer from './components/Footer/Footer';
 import { LoggedContextProvider } from './LoggedContext';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { HOME, LIBRARY, PERFIL, UPLOADBOOK } from './routes';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import { HOME, PERFIL, UPLOADBOOK } from './routes';
 import './App.css';
 
 const App = () => {
@@ -27,6 +27,7 @@ const App = () => {
             <PrivateRoute path={UPLOADBOOK} component={UploadBook} />
             <PrivateRoute path={"/libro/:bookId"} component={InfoAudioLibro} />
           </Switch>
+          <Footer />
         </div>
       </LoggedContextProvider>
     </BrowserRouter>

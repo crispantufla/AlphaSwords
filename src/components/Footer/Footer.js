@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => {
     return (
         <div className="row"> 
-            <p> (not)Copyright © 2020 S-Words INC. </p>
+            <h3> (not)Copyright © 2020 S-Words INC. </h3>
         </div>
     )
 };

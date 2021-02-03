@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import SelectRequest from '../Utils/SelectRequest';
+import SelectRequest from './SelectRequest';
 import './UploadBook.css';
 
 const UploadBook = () => {
@@ -40,19 +40,19 @@ const UploadBook = () => {
       };
 
       fetch(url, options)
-        .then((response) => {
-          if (response.status === 200) {
-            return response.json();
+        .then((bookResult) => {
+          if (bookResult.status === 200) {
+            return bookResult.json();
           }
-          return Promise.reject(response.status);
+          return Promise.reject(bookResult.status);
         })
         .then(result => {
           history.push('/libro/' + result._id);
         })
-        .catch((error) => console.log(error));
+        .catch( alert(":C algo salio mal!") );
     }
   }
-
+  
   return (
     <div className="UploadBook">
       <form>
