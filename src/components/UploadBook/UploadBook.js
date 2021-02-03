@@ -49,10 +49,11 @@ const UploadBook = () => {
         .then(result => {
           history.push('/libro/' + result._id);
         })
-        .catch( alert(":C algo salio mal!") );
+        .catch((error) => console.log(error));
     }
   }
   
+
   return (
     <div className="UploadBook">
       <form>

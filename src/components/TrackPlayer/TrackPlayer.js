@@ -5,7 +5,7 @@ import 'react-h5-audio-player/lib/styles.css';
 const TrackPlayer = ({id}) => {
 
     return(
-        <AudioPlayer src={`http://localhost:3001/play/track/${id}`} />
+        <AudioPlayer src={`http://localhost:3001/track/${id}`} />
     )
 }
 
