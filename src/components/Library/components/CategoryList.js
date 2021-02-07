@@ -2,7 +2,6 @@ import React, { useState, useEffect, Fragment } from 'react';
 import {fetchResource} from "../../../api";
 import Pagination from '../../Pagination/Pagination';
 import BookList from './BookList';
-import BookFinder from './BookFinder';
 
 const CategoryList = ({category, pages}) => {
     const [categoryData, setCategoryData] = useState();
@@ -18,7 +17,6 @@ const CategoryList = ({category, pages}) => {
 
     return (
         <Fragment>
-            <BookFinder />
             {categoryData && 
                 <div className="CategoryListContainer"> 
                     <BookList books={categoryData.category.books} />

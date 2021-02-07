@@ -142,3 +142,18 @@
 	position:relative;
 	top:1px;
 }
+
+
+.BookFinder {
+  text-align: center;
+}
+
+.BookFinder .formBookFinder .MuiSvgIcon-root {
+  vertical-align: middle;
+}
+
+.Search {
+  background-color: #1f1f1e;
+  color: white;
+  text-align: center;
+}

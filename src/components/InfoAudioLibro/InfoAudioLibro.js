@@ -5,14 +5,30 @@ import CommentsViewer from './CommentsViewer/CommentsViewer';
 import TrackPLayer from '../TrackPlayer/TrackPlayer';
 import FavButton from './FavButton/FavButton';
 import './InfoAudioLibro.css';
+import Rating from '@material-ui/lab/Rating';
+
 
 const InfoAudioLibro = () => {
     const [book, setBook] = useState();
-    const { bookId } = useParams()
+    const { bookId } = useParams();
+    const [score, setScore] = useState({userScore: 3});
+    const [disabledRating, setDisabledRating] = useState(false);
 
     useEffect(() => {
         fetchResource('book/getbook', bookId, 'GET').then(setBook);
+        fetchResource('book/checkuserscore', bookId, 'GET').then(setScore);
     }, [bookId])
+
+    const HandleScore = (event) => {
+        setScore({userScore: event.target.value})
+        let body = {
+            userScore: event.target.value,
+            user: localStorage.getItem('id'),
+            book: bookId
+        }
+        fetchResource('book/savescore', '', 'POST', body).then(setScore);
+        setDisabledRating(true);
+    }
 
     return (
         <Fragment>
@@ -25,9 +41,10 @@ const InfoAudioLibro = () => {
                     </div>
                     <div className="trackContainer">
                         <div className="trackPlayer">
-                            {book.file ? <TrackPLayer id={book.file}/> : <div>No se Ha podido encontrar el archivo</div>} 
+                            {book.file ? <div>Reproductor</div> : <div>No se Ha podido encontrar el archivo</div>} 
                         </div>
                         <div className="bookBoxText">
+                            <Rating name="half-rating" value={score.userScore} onChange={HandleScore} disabled={disabledRating} />
                             <div className="titleBox">{book.title}</div>
                             <div className="authorBox">Autor/a: {book.author}</div>
                             <div className="categoryBox">Categoria: {book.category.name}</div>

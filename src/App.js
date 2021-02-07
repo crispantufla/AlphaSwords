@@ -7,6 +7,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import NoLoggedUser from './components/PrivateRoute/NoLoggedUser';
 import UploadBook from './components/UploadBook/UploadBook';
 import InfoAudioLibro from './components/InfoAudioLibro/InfoAudioLibro';
+import Search from './components/Library/components/Search/Search';
 import Footer from './components/Footer/Footer';
 import { LoggedContextProvider } from './LoggedContext';
 import { BrowserRouter, Switch } from 'react-router-dom';
@@ -26,6 +27,7 @@ const App = () => {
             <PrivateRoute path={PERFIL} component={UserPanel} />
             <PrivateRoute path={UPLOADBOOK} component={UploadBook} />
             <PrivateRoute path={"/libro/:bookId"} component={InfoAudioLibro} />
+            <PrivateRoute path={"/search/:query"} component={Search} />
           </Switch>
           <Footer />
         </div>

@@ -20,6 +20,7 @@ const Pagination = ({totalPages, setCurrentPage, currentPage}) => {
         setDisablePrevButton(currentPage === 1);
         setDisableNextButton(currentPage === totalPages);
         setPages([]);
+        console.log(typeof currentPage)
 
         if (totalPages <= 7) {
             setPages([...Array(totalPages + 1).keys()].slice(1));
@@ -39,12 +40,12 @@ const Pagination = ({totalPages, setCurrentPage, currentPage}) => {
         if (currentPage >= totalPages - 3) {
             setPages(oldArray => [...oldArray, totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages]);
         } else {
-            setPages(oldArray => [...oldArray, "...", 15])
+            setPages(oldArray => [...oldArray, "...", totalPages])
         }
     }, [currentPage, totalPages]);
 
     const handleClick = (event) => {
-        setCurrentPage(event.target.dataset.page);
+        setCurrentPage(parseInt(event.target.dataset.page));
     }
 
     return(
@@ -58,7 +59,7 @@ const Pagination = ({totalPages, setCurrentPage, currentPage}) => {
                             return <li><span>...</span></li>
                         }
                         
-                        let className = (page === currentPage ? "ActualPaginationButton" : "paginationButton")
+                        let className = (page == currentPage ? "ActualPaginationButton" : "paginationButton")
                         return (
                             <li><button onClick={handleClick} data-page={page} className={className}>{page}</button></li>
                         )

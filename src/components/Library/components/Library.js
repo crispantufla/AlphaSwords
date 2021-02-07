@@ -12,7 +12,7 @@ const Library = ({categories}) => {
        setCategorySelected(categories[0]._id);
        setPages(categories[0].books.length);
         if (category === undefined) {
-            return history.push(`/biblioteca/${categories[0].name}`);
+            return history.push(`/biblioteca/${categories[0].name}`)
         }
     }, []);
 
@@ -35,7 +35,7 @@ const Library = ({categories}) => {
                 >
                     {item.name}
                 </NavLink>
-            ))};
+            ))}
         </div>
             {categorySelected ? <Fragment>
                 <CategoryList category={categorySelected} pages={pages}/>
