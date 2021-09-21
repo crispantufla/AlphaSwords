@@ -1,9 +1,10 @@
 import React, { useState, useRef } from "react";
-import SelectRequest from '../Utils/SelectRequest';
+import { useHistory } from "react-router-dom";
+import SelectRequest from './SelectRequest';
 import './UploadBook.css';
 
 const UploadBook = () => {
-
+  const history = useHistory();
   const [data, setData] = useState({});
   const [category, setCategory] = useState();
   const fileInputEl = useRef(null);
@@ -39,86 +40,34 @@ const UploadBook = () => {
       };
 
       fetch(url, options)
-        .then((response) => {
-          if (response.status === 200) {
-            return response.json();
+        .then((bookResult) => {
+          if (bookResult.status === 200) {
+            return bookResult.json();
           }
-          return Promise.reject(response.status);
+          return Promise.reject(bookResult.status);
         })
-        .then((result) => {
-          console.log(result);
+        .then(result => {
+          history.push('/libro/' + result._id);
         })
         .catch((error) => console.log(error));
     }
   }
+  
 
   return (
-      
-    <div className={"uploadForm"}>
-      <label className={"labelUpload tituloUpload"}>
-        SUBE UN LIBRO
-      </label><br/>
-      <label className={"labelUpload"}>
-        Titulo
-      </label><br/>
-      <input 
-        className={'input-library'} 
-        type="text" 
-        name="title"
-        required 
-        onChange={handleImputChange}
-      /><br/>
-      <label className={"labelUpload"}>
-        Categoria
-      </label><br/>
-      <SelectRequest 
-        setCategory={setCategory} 
-        request="category">
-      </SelectRequest><br/>
-      <label className={"labelUpload"}>
-        Autor
-      </label><br/>
-      <input 
-        className={'input-library'} 
-        type="text" 
-        name="author" 
-        required 
-        onChange={handleImputChange}
-      /><br/>
-      <label className={"labelUpload"}>
-        Sinopsis
-      </label><br/>
-      <textarea 
-        type="text" 
-        name="sinopsis" 
-        required
-        onChange={handleImputChange}
-      /><br/>
-      <label className={"labelUpload"}>
-        Cover
-      </label><br/>
-      <input
-        type="text" 
-        name="cover" 
-        required
-        onChange={handleImputChange}
-      /><br/>
-      <label className={"labelUpload"}>
-        Archivo
-      </label><br/>
-      <input 
-        className={'input-library'} 
-        type="file"
-        id="fileupload"
-        accept=".mp3,audio/*"
-        ref={fileInputEl}
-        required
-        /><br/>
-      <button 
-        className={"submitButton"}
-        onClick={ () => handleSubmit(fileInputEl.current.files) }>
-        Crear libro
-      </button>
+    <div className="UploadBook">
+      <form>
+        <h2>SUBE UN LIBRO</h2>
+        <input type="text" name="title" onChange={handleImputChange} placeholder="Titulo del libro"/>
+        <SelectRequest setCategory={setCategory} request="category" />
+        <input type="text" name="author" onChange={handleImputChange} placeholder="Autor del libro"/>
+        <textarea type="text" name="synopsis" onChange={handleImputChange} placeholder="Sinopsis del libro"/>
+        <input type="text" name="cover" onChange={handleImputChange} placeholder="Portada en URL"/>
+        <input type="file" id="fileupload" accept=".mp3,audio/*" ref={fileInputEl} />
+        <a className={"submitButton"} onClick={ () => handleSubmit(fileInputEl.current.files) }>
+          Crear libro
+        </a>
+      </form>
     </div>
   )
 }

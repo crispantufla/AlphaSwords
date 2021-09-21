@@ -1,18 +1,19 @@
 const HOME = "/";
-const BIBLIOTECA = "/biblioteca";
+const LIBRARY = "/biblioteca";
 const LOGIN = '/login';
 const REGISTER = '/register';
 const PERFIL = '/perfil';
 const UPLOADBOOK = '/upload';
 const FORGETPASS = '/login/forgetPass';
+const UP = '/up'
 
 export {
     HOME,
-    BIBLIOTECA,
+    LIBRARY,
     LOGIN,
     REGISTER,
     PERFIL,
     UPLOADBOOK,
-    FORGETPASS
-} 
-
+    FORGETPASS,
+    UP
+}

@@ -1,0 +1,159 @@
+.library {
+  background: #141414;
+  box-sizing: border-box;
+  color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.categories {
+  background: darkgray;
+}
+
+/*    BIBLIOTECA HEADER  */
+
+.header {
+  background: url(../Home/fondo3.jpg);
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  height: 300px;
+  width: 100%;
+  font-family: "Asap Condensed", sans-serif;
+}
+
+.title {
+  color: #fc8f35;
+  text-align: center;
+  text-shadow: 2px 2px 7px #000000;
+  font-size: 72px;
+}
+
+.subTitle {
+  text-align: center;
+  font-size: 30px;
+  text-shadow: 2px 2px 7px #000000;
+}
+
+/*     CARRUSEL        */
+
+.CategorySlide {
+  text-align: center;
+}
+
+.CategoryItem {
+  display: inline-block;
+  margin: 10px;
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.CategoryItemActive {
+  color: #fc8f35;
+}
+
+/* BIBLIOTECA BODY */
+
+.CategoryListContainer {
+  background-color: #141414;
+}
+
+.BookList {
+  border: grey;
+  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  flex-direction: row;
+  overflow: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/*     MINIATURA LIBRO        */
+
+.MiniatureBook {
+  height: 200px;
+  margin: 20px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.BookImg {
+  position: absolute;
+  right: 4%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.MiniatureBookTitle {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  padding: 10px;
+  margin: 0;
+}
+
+.ImgContainer {
+  position: relative;
+  width: 150px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.BookImg:hover {
+  opacity: 0.07;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  -ms-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+.MiniatureBookTitle {
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.Pagination {
+  text-align: center;
+  padding: 15px;
+}
+
+.Pagination button {
+	background-color:#ffffff;
+	border:1px solid #a38200;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-size:20px;
+	padding:10px 15px;
+}
+.Pagination button:hover {
+	background-color:#fad473;
+}
+.Pagination button:active {
+	position:relative;
+	top:1px;
+}
+
+
+.BookFinder {
+  text-align: center;
+}
+
+.BookFinder .formBookFinder .MuiSvgIcon-root {
+  vertical-align: middle;
+}
+
+.Search {
+  background-color: #1f1f1e;
+  color: white;
+  text-align: center;
+}

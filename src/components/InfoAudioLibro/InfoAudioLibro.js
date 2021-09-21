@@ -1,40 +1,61 @@
-import React, { useState, useEffect } from 'react';
-import './InfoAudioLibro.css';
+import React, { useState, useEffect, Fragment } from 'react';
+import { useParams } from 'react-router-dom';
 import { fetchResource } from "../../api";
-import { AddComment } from '../AddComment/AddComment';
-import { CommentsViewer } from '../CommentsViewer/CommentsViewer';
+import CommentsViewer from './CommentsViewer/CommentsViewer';
+import TrackPLayer from '../TrackPlayer/TrackPlayer';
+import FavButton from './FavButton/FavButton';
+import './InfoAudioLibro.css';
+import Rating from '@material-ui/lab/Rating';
+
 
 const InfoAudioLibro = () => {
-
-    const [data, setData] = useState();
+    const [book, setBook] = useState();
+    const { bookId } = useParams();
+    const [score, setScore] = useState({userScore: 3});
+    const [disabledRating, setDisabledRating] = useState(false);
 
     useEffect(() => {
-        fetchResource('data/book', '5fc547952818650da53038e5', 'GET')
-            .then(result => { setData(result) });
-    }, [])
+        fetchResource('book/getbook', bookId, 'GET').then(setBook);
+        fetchResource('book/checkuserscore', bookId, 'GET').then(setScore);
+    }, [bookId])
+
+    const HandleScore = (event) => {
+        setScore({userScore: event.target.value})
+        let body = {
+            userScore: event.target.value,
+            user: localStorage.getItem('id'),
+            book: bookId
+        }
+        fetchResource('book/savescore', '', 'POST', body).then(setScore);
+        setDisabledRating(true);
+    }
 
     return (
-        <div className="Fondo">
-            <div className="boxInfo">
-                <div className="bookBoxImage">
-                    <div className="BookTitle">Carátula</div>
-                    <img className="BookImage" src="https://static-1.ivoox.com/audios/7/6/5/7/2311470387567_XXL.jpg"></img>
+        <Fragment>
+            {book && 
+                <div className="boxInfo">
+                    <div className="bookContainer">
+                        <div className="titleBox">{book.title}</div>
+                        <FavButton bookId={bookId} />
+                        <img className="bookImage" src={book.cover} alt="image not found" />
+                    </div>
+                    <div className="trackContainer">
+                        <div className="trackPlayer">
+                            {book.file ? <div>Reproductor</div> : <div>No se Ha podido encontrar el archivo</div>} 
+                        </div>
+                        <div className="bookBoxText">
+                            <Rating name="half-rating" value={score.userScore} onChange={HandleScore} disabled={disabledRating} />
+                            <div className="titleBox">{book.title}</div>
+                            <div className="authorBox">Autor/a: {book.author}</div>
+                            <div className="categoryBox">Categoria: {book.category.name}</div>
+                            <div className="createdByBox">Creado por: {book.user.nickname}</div>
+                            <div className="descriptionBox">Descripción: {book.synopsis}</div>
+                        </div>
+                    </div>
+                    <CommentsViewer bookId={bookId} />
                 </div>
-                <div className="bookBoxText">
-                    <div className="TitleBox">{data && data.title}</div>
-                    <div className="AuthorBox">Autor/a: {data && data.author}</div>
-                    <div className="CategoryBox">Categoria: {data && data.category}</div>
-                    <div className="CreatedByBox">Creado por: {data && data.user}</div>
-                    <div className="DescriptionBox">Descripción: A Clarice Starling, joven y ambiciosa estudiante de la academia del FBI, le encomiendan que entreviste a Hannibal Lecter, brillante psiquiatra y despiadado asesino, para conseguir su colaboración en la resolución de un caso de asesinatos en serie. El asombroso conocimiento de Lecter del comportamiento humano y su poderosa personalidad cautivarán de inmediato a Clarice, quien, incapaz de dominarse, establecerá con el una ambigua, inquietante y peligrosa relación.
-
-El silencio de los corderos fue llevada al cine en 1991, y ganó los Premios Oscar a las categorías mejor película, mejor dirección (Jonathan Demme), mejor actriz (Jodie Foster), mejor actor (Anthony Hopkins) y mejor guion adaptado.</div>
-                </div>
-                <CommentsViewer tituloComment={data} />
-                <div className="AddCommentBox">
-                    <AddComment userId="5fc13ad510b3225ac01e2f26" />
-                </div>
-            </div>
-        </div>
+            }
+        </Fragment>
     )
 };
 

@@ -1,43 +1,39 @@
-import './App.css';
-import React, { useState } from 'react';
-import NewHome from './components/NewHome/NewHome';
-import Login from './components/Login/Login';
+import React from 'react';
+import LoadLibrary from './components/Library/LoadLibrary'
 import Navbar from './components/Navbar/Navbar';
-import Register from './components/Register/Register';
-import InfoAudioLibro from './components/InfoAudioLibro/InfoAudioLibro';
-import UserPanel from './components/UserPanel/UserPanel';
+import Container from './components/UserPanel/Container';
 import Home from './components/Home/Home';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import Forgetpass from './components/Login/ForgetPass';
-import PageUploadBook from './components/UploadBook/PageUploadBook';
+import NoLoggedUser from './components/PrivateRoute/NoLoggedUser';
+import UploadBook from './components/UploadBook/UploadBook';
+import InfoAudioLibro from './components/InfoAudioLibro/InfoAudioLibro';
+import Search from './components/Library/components/Search/Search';
 import Footer from './components/Footer/Footer';
-import {LogedContextProvider} from './LogedContext';
-import {BrowserRouter,
-Switch,
-Route
-} from 'react-router-dom';
-import {HOME, BIBLIOTECA, REGISTER, LOGIN, PERFIL, UPLOADBOOK, FORGETPASS} from './routes';
-import { isLogin } from './utils/loginUtils';
+import { LoggedContextProvider } from './LoggedContext';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import { HOME, PERFIL, UPLOADBOOK } from './routes';
+import './App.css';
 
-function App() {
-  
+const App = () => {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <LogedContextProvider>
-          <Navbar />
+    <BrowserRouter>
+      <LoggedContextProvider>
+        <Navbar />
+        <div className="App">
           <Switch>
-            <Route path={HOME} exact component={NewHome} />
-            <Route path={LOGIN} exact component={Login} />
-            <Route path={REGISTER} component={Register} />
-            <Route path={BIBLIOTECA} component={InfoAudioLibro} />
-            <PrivateRoute path={PERFIL} component={UserPanel} />
-            <PrivateRoute path={UPLOADBOOK} component={PageUploadBook} />
-            <Route path={FORGETPASS} exact component={Forgetpass} />
+            <NoLoggedUser path={HOME} exact component={Home} />
+            <PrivateRoute path={"/biblioteca"} exact component={LoadLibrary} />
+            <PrivateRoute path={"/biblioteca/:category"} component={LoadLibrary} />
+            <PrivateRoute path={PERFIL} component={Container} />
+            <PrivateRoute path={UPLOADBOOK} component={UploadBook} />
+            <PrivateRoute path={"/libro/:bookId"} component={InfoAudioLibro} />
+            <PrivateRoute path={"/search/:query"} component={Search} />
           </Switch>
-        </LogedContextProvider>
-      </BrowserRouter>
-    </div>
+          <Footer />
+        </div>
+      </LoggedContextProvider>
+    </BrowserRouter>
   );
 }
+
 export default App;
